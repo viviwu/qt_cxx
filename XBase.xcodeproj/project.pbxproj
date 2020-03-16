@@ -10,6 +10,8 @@
 		0D62AC8A241F710E008249AD /* XBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D62AC80241F710E008249AD /* XBase.framework */; };
 		0D62AC8F241F710E008249AD /* XBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC8E241F710E008249AD /* XBaseTests.m */; };
 		0D62AC91241F710E008249AD /* XBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC83241F710E008249AD /* XBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC9A241F7144008249AD /* NSObject+XSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC9B241F7144008249AD /* NSObject+XSObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +31,8 @@
 		0D62AC89241F710E008249AD /* XBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D62AC8E241F710E008249AD /* XBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XBaseTests.m; sourceTree = "<group>"; };
 		0D62AC90241F710E008249AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0D62AC9A241F7144008249AD /* NSObject+XSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XSObject.h"; sourceTree = "<group>"; };
+		0D62AC9B241F7144008249AD /* NSObject+XSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XSObject.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +76,8 @@
 			isa = PBXGroup;
 			children = (
 				0D62AC83241F710E008249AD /* XBase.h */,
+				0D62AC9A241F7144008249AD /* NSObject+XSObject.h */,
+				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
 				0D62AC84241F710E008249AD /* Info.plist */,
 			);
 			path = XBase;
@@ -93,6 +99,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */,
 				0D62AC91241F710E008249AD /* XBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,7 +345,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4Y3RY63P53;
+				DEVELOPMENT_TEAM = ALAK6VG32W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -348,7 +356,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qway.xbase.XBase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qway.xbase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -360,7 +368,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = 4Y3RY63P53;
+				DEVELOPMENT_TEAM = ALAK6VG32W;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -371,7 +379,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.qway.xbase.XBase;
+				PRODUCT_BUNDLE_IDENTIFIER = com.qway.xbase;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";

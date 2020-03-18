@@ -65,8 +65,7 @@
 		0D5694AC2421A38000D3BDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0DCD32F52421C5B5002AE9BD /* XObject.h */,
-				0DCD32F62421C5B5002AE9BD /* XObject.m */,
+				0DCD32F92421F717002AE9BD /* XObject */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -125,6 +124,15 @@
 				0DCD32F12421BDC2002AE9BD /* Foundation.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0DCD32F92421F717002AE9BD /* XObject */ = {
+			isa = PBXGroup;
+			children = (
+				0DCD32F52421C5B5002AE9BD /* XObject.h */,
+				0DCD32F62421C5B5002AE9BD /* XObject.m */,
+			);
+			path = XObject;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

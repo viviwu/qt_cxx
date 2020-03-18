@@ -12,6 +12,7 @@
 		0D62AC91241F710E008249AD /* XBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC83241F710E008249AD /* XBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC9A241F7144008249AD /* NSObject+XSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC9B241F7144008249AD /* NSObject+XSObject.m */; };
+		0DCD32EE2421AC69002AE9BD /* introFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD32ED2421AC69002AE9BD /* introFile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,6 +34,7 @@
 		0D62AC90241F710E008249AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0D62AC9A241F7144008249AD /* NSObject+XSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XSObject.h"; sourceTree = "<group>"; };
 		0D62AC9B241F7144008249AD /* NSObject+XSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XSObject.m"; sourceTree = "<group>"; };
+		0DCD32ED2421AC69002AE9BD /* introFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = introFile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0D5694AC2421A38000D3BDC7 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				0D62AC9A241F7144008249AD /* NSObject+XSObject.h */,
+				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
+				0DCD32EC2421AC3F002AE9BD /* Exclude */,
+			);
+			path = Class;
+			sourceTree = "<group>";
+		};
 		0D62AC76241F710E008249AD = {
 			isa = PBXGroup;
 			children = (
@@ -76,8 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				0D62AC83241F710E008249AD /* XBase.h */,
-				0D62AC9A241F7144008249AD /* NSObject+XSObject.h */,
-				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
+				0D5694AC2421A38000D3BDC7 /* Class */,
 				0D62AC84241F710E008249AD /* Info.plist */,
 			);
 			path = XBase;
@@ -90,6 +101,14 @@
 				0D62AC90241F710E008249AD /* Info.plist */,
 			);
 			path = XBaseTests;
+			sourceTree = "<group>";
+		};
+		0DCD32EC2421AC3F002AE9BD /* Exclude */ = {
+			isa = PBXGroup;
+			children = (
+				0DCD32ED2421AC69002AE9BD /* introFile */,
+			);
+			path = Exclude;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -184,6 +203,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DCD32EE2421AC69002AE9BD /* introFile in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

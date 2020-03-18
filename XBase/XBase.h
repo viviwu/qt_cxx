@@ -16,4 +16,4 @@ FOUNDATION_EXPORT const unsigned char XBaseVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <XBase/PublicHeader.h>
 
-#import <XBase/NSObject+XSObject.h>
+#import <XBase/XObject.h>

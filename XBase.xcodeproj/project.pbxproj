@@ -13,7 +13,7 @@
 		0DCD32EE2421AC69002AE9BD /* introFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD32ED2421AC69002AE9BD /* introFile */; };
 		0DCD32F22421BDC2002AE9BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F12421BDC2002AE9BD /* Foundation.framework */; };
 		0DCD32F42421BDD5002AE9BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F32421BDD5002AE9BD /* UIKit.framework */; };
-		0DCD32F72421C5B5002AE9BD /* XObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD32F52421C5B5002AE9BD /* XObject.h */; };
+		0DCD32F72421C5B5002AE9BD /* XObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD32F52421C5B5002AE9BD /* XObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DCD32F82421C5B5002AE9BD /* XObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCD32F62421C5B5002AE9BD /* XObject.m */; };
 /* End PBXBuildFile section */
 

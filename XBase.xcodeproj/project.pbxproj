@@ -60,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				0DCD32EF2421B914002AE9BD /* ExtCat */,
-				0DCD32EC2421AC3F002AE9BD /* Exclude */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -86,6 +85,7 @@
 		0D62AC82241F710E008249AD /* XBase */ = {
 			isa = PBXGroup;
 			children = (
+				0DCD32EC2421AC3F002AE9BD /* Exclude */,
 				0D5694AC2421A38000D3BDC7 /* Classes */,
 				0D62AC83241F710E008249AD /* XBase.h */,
 				0D62AC84241F710E008249AD /* Info.plist */,

@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "SpecTest"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of SpecTest for XBase."
+  spec.summary      = "App Base Util tool classes for iOS and OS X."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -92,7 +92,8 @@ Pod::Spec.new do |spec|
   #
 
    # 源码所在路径
-  spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+   spec.source_files  = "Classes", "Classes/ExtCat/NSObject+XSObject.{h,m}"
+  # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 
   # 对外公开的h文件地址，swift一般用不到

@@ -93,7 +93,7 @@ Pod::Spec.new do |spec|
 
    # 源码所在路径
   spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.exclude_files = "Classes/Exclude"
+  # spec.exclude_files = "Classes/Exclude"
 
   # 对外公开的h文件地址，swift一般用不到
   # spec.public_header_files = "Classes/**/*.h"
@@ -122,7 +122,7 @@ Pod::Spec.new do |spec|
   # 包含的系统framework
   # spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
-  spec.frameworks = 'UIKit', 'MapKit'
+  spec.frameworks = 'UIKit', 'Foundation'
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"

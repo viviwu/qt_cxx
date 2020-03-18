@@ -13,6 +13,8 @@
 		0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC9A241F7144008249AD /* NSObject+XSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC9B241F7144008249AD /* NSObject+XSObject.m */; };
 		0DCD32EE2421AC69002AE9BD /* introFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD32ED2421AC69002AE9BD /* introFile */; };
+		0DCD32F22421BDC2002AE9BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F12421BDC2002AE9BD /* Foundation.framework */; };
+		0DCD32F42421BDD5002AE9BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F32421BDD5002AE9BD /* UIKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +37,8 @@
 		0D62AC9A241F7144008249AD /* NSObject+XSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XSObject.h"; sourceTree = "<group>"; };
 		0D62AC9B241F7144008249AD /* NSObject+XSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XSObject.m"; sourceTree = "<group>"; };
 		0DCD32ED2421AC69002AE9BD /* introFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = introFile; sourceTree = "<group>"; };
+		0DCD32F12421BDC2002AE9BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		0DCD32F32421BDD5002AE9BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +46,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0DCD32F42421BDD5002AE9BD /* UIKit.framework in Frameworks */,
+				0DCD32F22421BDC2002AE9BD /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +76,7 @@
 				0D62AC82241F710E008249AD /* XBase */,
 				0D62AC8D241F710E008249AD /* XBaseTests */,
 				0D62AC81241F710E008249AD /* Products */,
+				0DCD32F02421BDC2002AE9BD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -117,6 +124,15 @@
 				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
 			);
 			path = ExtCat;
+			sourceTree = "<group>";
+		};
+		0DCD32F02421BDC2002AE9BD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0DCD32F32421BDD5002AE9BD /* UIKit.framework */,
+				0DCD32F12421BDC2002AE9BD /* Foundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

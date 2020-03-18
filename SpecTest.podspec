@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  TODO: Add long description of the pod here.
+  TODO: Need a meaningful summary of the pod here.
                    DESC
 
   spec.homepage     = "https://viviwu.github.io/XBase/"
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = {:type => "MIT", :file => "FILE_LICENSE" }
+  spec.license      = {:type => "MIT", :file => "LICENSE" }
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 

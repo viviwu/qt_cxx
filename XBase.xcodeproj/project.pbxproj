@@ -56,20 +56,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0D5694AC2421A38000D3BDC7 /* Class */ = {
+		0D5694AC2421A38000D3BDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
 				0D62AC9A241F7144008249AD /* NSObject+XSObject.h */,
 				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
 				0DCD32EC2421AC3F002AE9BD /* Exclude */,
 			);
-			path = Class;
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		0D62AC76241F710E008249AD = {
 			isa = PBXGroup;
 			children = (
-				0D5694AC2421A38000D3BDC7 /* Class */,
+				0D5694AC2421A38000D3BDC7 /* Classes */,
 				0D62AC82241F710E008249AD /* XBase */,
 				0D62AC8D241F710E008249AD /* XBaseTests */,
 				0D62AC81241F710E008249AD /* Products */,

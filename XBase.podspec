@@ -1,5 +1,5 @@
 #
-#  Be sure to run `pod spec lint SpecTest.podspec' to ensure this is a
+#  Be sure to run `pod spec lint XBase.podspec' to ensure this is a
 #  valid spec and to remove all comments including this before submitting the spec.
 #
 #  To learn more about Podspec attributes see https://guides.cocoapods.org/syntax/podspec.html
@@ -15,9 +15,9 @@ Pod::Spec.new do |spec|
   #  summary should be tweet-length, and the description more in depth.
   #
 
-  spec.name         = "SpecTest"
+  spec.name         = "XBase"
   spec.version      = "0.0.1"
-  spec.summary      = "A short description of SpecTest."
+  spec.summary      = "A short description of XBase."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,6 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  App Base Util tool
                    DESC
 
   spec.homepage     = "https://viviwu.github.io/XBase/"
@@ -39,7 +38,8 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = "BSD"
+  # spec.license      = "MIT (example)"
+    spec.license      = { :type => "BSD", :text => "LICENSE" }
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/viviwu/XBase", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/viviwu/XBase.git", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -92,7 +92,7 @@ Pod::Spec.new do |spec|
   #
 
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
-  spec.source_files  = "Classes", "Classes/XObject.{h,m}"
+  spec.source_files  = "Classes", "Classes/XObject{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 
   # spec.public_header_files = "Classes/**/*.h"
@@ -132,7 +132,10 @@ Pod::Spec.new do |spec|
   #  where they will only apply to your library. If you depend on other Podspecs
   #  you can include multiple dependencies to ensure it works.
 
-  # spec.requires_arc = true
+  spec.requires_arc = true
+  spec.swift_version = "5.0"
+  spec.ios.deployment_target = "8.0"
+  spec.osx.deployment_target = "10.10"
 
   # spec.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
   # spec.dependency "JSONKit", "~> 1.4"

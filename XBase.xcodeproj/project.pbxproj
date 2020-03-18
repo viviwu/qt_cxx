@@ -10,11 +10,11 @@
 		0D62AC8A241F710E008249AD /* XBase.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0D62AC80241F710E008249AD /* XBase.framework */; };
 		0D62AC8F241F710E008249AD /* XBaseTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC8E241F710E008249AD /* XBaseTests.m */; };
 		0D62AC91241F710E008249AD /* XBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC83241F710E008249AD /* XBase.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D62AC9A241F7144008249AD /* NSObject+XSObject.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0D62AC9B241F7144008249AD /* NSObject+XSObject.m */; };
 		0DCD32EE2421AC69002AE9BD /* introFile in Resources */ = {isa = PBXBuildFile; fileRef = 0DCD32ED2421AC69002AE9BD /* introFile */; };
 		0DCD32F22421BDC2002AE9BD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F12421BDC2002AE9BD /* Foundation.framework */; };
 		0DCD32F42421BDD5002AE9BD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0DCD32F32421BDD5002AE9BD /* UIKit.framework */; };
+		0DCD32F72421C5B5002AE9BD /* XObject.h in Headers */ = {isa = PBXBuildFile; fileRef = 0DCD32F52421C5B5002AE9BD /* XObject.h */; };
+		0DCD32F82421C5B5002AE9BD /* XObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 0DCD32F62421C5B5002AE9BD /* XObject.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,11 +34,11 @@
 		0D62AC89241F710E008249AD /* XBaseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XBaseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0D62AC8E241F710E008249AD /* XBaseTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XBaseTests.m; sourceTree = "<group>"; };
 		0D62AC90241F710E008249AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0D62AC9A241F7144008249AD /* NSObject+XSObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+XSObject.h"; sourceTree = "<group>"; };
-		0D62AC9B241F7144008249AD /* NSObject+XSObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+XSObject.m"; sourceTree = "<group>"; };
 		0DCD32ED2421AC69002AE9BD /* introFile */ = {isa = PBXFileReference; lastKnownFileType = text; path = introFile; sourceTree = "<group>"; };
 		0DCD32F12421BDC2002AE9BD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
 		0DCD32F32421BDD5002AE9BD /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		0DCD32F52421C5B5002AE9BD /* XObject.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XObject.h; sourceTree = "<group>"; };
+		0DCD32F62421C5B5002AE9BD /* XObject.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XObject.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,7 +65,8 @@
 		0D5694AC2421A38000D3BDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0DCD32EF2421B914002AE9BD /* ExtCat */,
+				0DCD32F52421C5B5002AE9BD /* XObject.h */,
+				0DCD32F62421C5B5002AE9BD /* XObject.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -117,15 +118,6 @@
 			path = Exclude;
 			sourceTree = "<group>";
 		};
-		0DCD32EF2421B914002AE9BD /* ExtCat */ = {
-			isa = PBXGroup;
-			children = (
-				0D62AC9A241F7144008249AD /* NSObject+XSObject.h */,
-				0D62AC9B241F7144008249AD /* NSObject+XSObject.m */,
-			);
-			path = ExtCat;
-			sourceTree = "<group>";
-		};
 		0DCD32F02421BDC2002AE9BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,7 +134,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D62AC9C241F7144008249AD /* NSObject+XSObject.h in Headers */,
+				0DCD32F72421C5B5002AE9BD /* XObject.h in Headers */,
 				0D62AC91241F710E008249AD /* XBase.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -245,7 +237,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0D62AC9D241F7144008249AD /* NSObject+XSObject.m in Sources */,
+				0DCD32F82421C5B5002AE9BD /* XObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

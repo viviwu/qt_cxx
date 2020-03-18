@@ -1,19 +1,16 @@
 //
-//  NSObject+XSObject.h
+//  XObject.h
 //  XBase
 //
-//  Created by vivi wu on 2020/3/16.
+//  Created by vivi wu on 2020/3/18.
 //  Copyright © 2020 vivi wu. All rights reserved.
 //
-
-//#import <AppKit/AppKit.h>
-
 
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface NSObject (XSObject)
+@interface XObject : NSObject
 
 - (void)introSelf;
 

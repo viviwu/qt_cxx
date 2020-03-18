@@ -17,7 +17,7 @@ Pod::Spec.new do |spec|
 
   spec.name         = "SpecTest"
   spec.version      = "0.0.1"
-  spec.summary      = "App Base Util tool classes for iOS and OS X."
+  spec.summary      = "A short description of SpecTest."
 
   # This description is used to generate tags and improve search results.
   #   * Think: What does it do? Why did you write it? What is the focus?
@@ -25,7 +25,7 @@ Pod::Spec.new do |spec|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   spec.description  = <<-DESC
-  TODO: Need a meaningful summary of the pod here.
+  App Base Util tool
                    DESC
 
   spec.homepage     = "https://viviwu.github.io/XBase/"
@@ -39,7 +39,7 @@ Pod::Spec.new do |spec|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  spec.license      = { :type => "BSD", :file => "LICENSE" }
+  spec.license      = "BSD"
   # spec.license      = { :type => "MIT", :file => "FILE_LICENSE" }
 
 
@@ -55,7 +55,7 @@ Pod::Spec.new do |spec|
 
   spec.author             = { "viviwu" => "vivi705@qq.com" }
   # Or just: spec.author    = "viviwu"
-  spec.authors            = { "viviwu" => "vivi705@qq.com" }
+  # spec.authors            = { "viviwu" => "vivi705@qq.com" }
   # spec.social_media_url   = "https://twitter.com/viviwu"
 
   # ――― Platform Specifics ――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -80,7 +80,7 @@ Pod::Spec.new do |spec|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  spec.source       = { :git => "https://github.com/viviwu/XBase.git", :tag => "#{spec.version}" }
+  spec.source       = { :git => "https://github.com/viviwu/XBase", :tag => "#{spec.version}" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -91,12 +91,10 @@ Pod::Spec.new do |spec|
   #  Not including the public_header_files will make all headers public.
   #
 
-   # 源码所在路径
-   spec.source_files  = "Classes", "Classes/ExtCat/NSObject+XSObject.{h,m}"
   # spec.source_files  = "Classes", "Classes/**/*.{h,m}"
+  spec.source_files  = "Classes", "Classes/ExtCat/NSObject+XSObject.{h,m}"
   # spec.exclude_files = "Classes/Exclude"
 
-  # 对外公开的h文件地址，swift一般用不到
   # spec.public_header_files = "Classes/**/*.h"
 
 
@@ -120,10 +118,9 @@ Pod::Spec.new do |spec|
   #  the lib prefix of their name.
   #
 
-  # 包含的系统framework
   # spec.framework  = "SomeFramework"
   # spec.frameworks = "SomeFramework", "AnotherFramework"
-  spec.frameworks = 'UIKit', 'Foundation'
+  spec.frameworks = "Foundation", "UIKit"
 
   # spec.library   = "iconv"
   # spec.libraries = "iconv", "xml2"

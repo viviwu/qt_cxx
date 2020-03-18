@@ -65,8 +65,6 @@
 		0D5694AC2421A38000D3BDC7 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0DCD32F52421C5B5002AE9BD /* XObject.h */,
-				0DCD32F62421C5B5002AE9BD /* XObject.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -74,6 +72,8 @@
 		0D62AC76241F710E008249AD = {
 			isa = PBXGroup;
 			children = (
+				0DCD32F52421C5B5002AE9BD /* XObject.h */,
+				0DCD32F62421C5B5002AE9BD /* XObject.m */,
 				0DCD32EC2421AC3F002AE9BD /* Exclude */,
 				0D5694AC2421A38000D3BDC7 /* Classes */,
 				0D62AC82241F710E008249AD /* XBase */,

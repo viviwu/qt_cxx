@@ -69,6 +69,7 @@
 		0D62AC76241F710E008249AD = {
 			isa = PBXGroup;
 			children = (
+				0D5694AC2421A38000D3BDC7 /* Class */,
 				0D62AC82241F710E008249AD /* XBase */,
 				0D62AC8D241F710E008249AD /* XBaseTests */,
 				0D62AC81241F710E008249AD /* Products */,
@@ -88,7 +89,6 @@
 			isa = PBXGroup;
 			children = (
 				0D62AC83241F710E008249AD /* XBase.h */,
-				0D5694AC2421A38000D3BDC7 /* Class */,
 				0D62AC84241F710E008249AD /* Info.plist */,
 			);
 			path = XBase;

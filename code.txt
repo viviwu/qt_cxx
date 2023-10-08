@@ -1,0 +1,94 @@
+#include <QObject>
+#include <QMap>
+#include <QString>
+#include <QVariant>
+#include <QDebug>
+
+class QTNotificationCenter;
+
+// 定义函数指针类型
+typedef void (*NotificationHandler)(const QString& name, const QVariantMap& userInfo);
+
+class QTNotificationCenter : public QObject
+{
+    Q_OBJECT
+
+public:
+    static QTNotificationCenter* defaultCenter()
+    {
+        static QTNotificationCenter notificationCenter;
+        return &notificationCenter;
+    }
+
+    void postNotification(const QString& name, const QVariantMap& userInfo = QVariantMap())
+    {
+        emit notificationPosted(name, userInfo);
+    }
+
+    void addObserver(QObject* observer, const QString& name, NotificationHandler handler)
+    {
+        QString key = QString("%1:%2").arg(name, QString::number(reinterpret_cast<qint64>(handler)));
+        m_observers[key] = observer;
+        connect(this, SIGNAL(notificationPosted(QString,QVariantMap)), observer, SLOT(handleNotification(QString,QVariantMap)));
+        m_handlers[handler] = observer;
+    }
+
+    void removeObserver(QObject* observer, const QString& name, NotificationHandler handler)
+    {
+        QString key = QString("%1:%2").arg(name, QString::number(reinterpret_cast<qint64>(handler)));
+        m_observers.remove(key);
+        disconnect(this, SIGNAL(notificationPosted(QString,QVariantMap)), observer, SLOT(handleNotification(QString,QVariantMap)));
+        m_handlers.remove(handler);
+    }
+
+signals:
+    void notificationPosted(const QString& name, const QVariantMap& userInfo);
+
+private:
+    QTNotificationCenter() {}
+
+    QMap<QString, QObject*> m_observers;
+    QMap<NotificationHandler, QObject*> m_handlers;
+};
+
+class MyObserver : public QObject
+{
+    Q_OBJECT
+
+public slots:
+    void handleNotification(const QString& name, const QVariantMap& userInfo)
+    {
+        qDebug() << "Received notification:" << name;
+        qDebug() << "User Info:" << userInfo;
+    }
+};
+
+int main(int argc, char *argv[])
+{
+    QCoreApplication a(argc, argv);
+
+    MyObserver observer1;
+    MyObserver observer2;
+
+    // 定义自定义的槽函数
+    void customHandler(const QString& name, const QVariantMap& userInfo)
+    {
+        qDebug() << "Custom handler for notification:" << name;
+        qDebug() << "User Info:" << userInfo;
+    }
+
+    QTNotificationCenter::defaultCenter()->addObserver(&observer1, "NotificationName", &MyObserver::handleNotification);
+    QTNotificationCenter::defaultCenter()->addObserver(&observer2, "NotificationName", customHandler);
+
+    QVariantMap userInfo;
+    userInfo["Key"] = "Value";
+
+    QTNotificationCenter::defaultCenter()->postNotification("NotificationName", userInfo);
+
+    QTNotificationCenter::defaultCenter()->removeObserver(&observer1, "NotificationName", &MyObserver::handleNotification);
+    QTNotificationCenter::defaultCenter()->removeObserver(&observer2, "NotificationName", customHandler);
+
+    return a.exec();
+}
+
+#include "main.moc"

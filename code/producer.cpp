@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QJsonObject>
 
-#include "notification/meta_notificatio_ncenter.h"
+#include "notification/meta_notification_center.h"
 
 Producer::Producer(QObject *parent)
     : QObject{parent}

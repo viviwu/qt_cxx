@@ -55,6 +55,7 @@ include_directories(
         code/include
         code/notification
         code/widgets
+        code
 )
 # ui_xxx.h path
 set(CMAKE_AUTOUIC_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/code/include/uic)
@@ -63,8 +64,8 @@ list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/code/widgets)
 # find_file(UI_FILES ui_xxx.h PATHS ${CMAKE_CURRENT_SOURCE_DIR}/omc_ui/uic NO_DEFAULT_PATH)
 
 file(GLOB CODE_SRC code/*.cpp code/*.cpp )
-file(GLOB UIC_SRC code/widgets/*.cpp code/notification/*.cpp )
-set(QNTF_SRC code/notification/xnotificationcenter.cpp code/notification/xnotificationcenter.h)
+file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp )
+file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
 
 add_executable(${PROJECT_NAME} ${CODE_SRC} ${UIC_SRC} ${QNTF_SRC})
 

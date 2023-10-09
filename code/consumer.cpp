@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QJsonObject>
 
-#include "notification/meta_notificatio_ncenter.h"
+#include "notification/meta_notification_center.h"
 
 Consumer::Consumer(QObject *parent) : QObject{parent} {
   qDebug() << __FUNCTION__;
@@ -18,6 +18,6 @@ Consumer::~Consumer() {
 Q_INVOKABLE QJsonObject Consumer::onDataReceived(const QJsonObject &data) {
   qDebug() << "Data received:" << data["message"].toString();
   QJsonObject result;
-  result["string"] = "I got it";
+  result["string"] = "Consumer:I got it!";
   return result;
 }

@@ -1,5 +1,5 @@
 // xnotificationcenter.cpp
-#include "meta_notificatio_ncenter.h"
+#include "meta_notification_center.h"
 
 MetaNotificationCenter *MetaNotificationCenter::m_instance = nullptr;
 

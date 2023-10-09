@@ -14,13 +14,13 @@ INCLUDEPATH += \
 
 SOURCES += \
     code/main.cpp \
-    code/notification/meta_notificatio_ncenter.cpp \
+    code/notification/meta_notification_center.cpp \
     code/widgets/mainwindow.cpp \
     code/producer.cpp \
     code/consumer.cpp
 
 HEADERS += \
-    code/notification/meta_notificatio_ncenter.h \
+    code/notification/meta_notification_center.h \
     code/widgets/mainwindow.h \
     code/consumer.h \
     code/producer.h

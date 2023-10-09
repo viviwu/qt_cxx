@@ -8,14 +8,14 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 set(CMAKE_AUTOUIC ON)
 
-if(DEFINED CMAKE_BUILD_TYPE)
+if (DEFINED CMAKE_BUILD_TYPE)
     message(STATUS "CMAKE_BUILD_TYPE is defined: ${CMAKE_BUILD_TYPE}")
-else()
+else ()
     message(STATUS "CMAKE_BUILD_TYPE is not defined")
     set(CMAKE_BUILD_TYPE Release)
-endif()
+endif ()
 
-set(OUTPUT_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
+set(OUTPUT_DIR "${CMAKE_CURRENT_SOURCE_DIR}/bin/${CMAKE_BUILD_TYPE}")
 # build output
 set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${OUTPUT_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${OUTPUT_DIR})
@@ -24,32 +24,33 @@ set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_DIR})
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${OUTPUT_DIR})
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${OUTPUT_DIR})
 
-if("$ENV{PATH}" MATCHES "Qt6")
+if ("$ENV{PATH}" MATCHES "Qt6")
     message("System PATH contains 'Qt'")
     message(STATUS "ENV_PATH:  $ENV{PATH}")
-else()
+else ()
     message("System PATH does not contain 'Qt' (CMAKE_SYSTEM_NAME: ${CMAKE_SYSTEM_NAME})")
     # QtMSVC path, check "build toolchain arch" first
-    if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
+    if (CMAKE_SYSTEM_NAME STREQUAL "Windows")
         if (CMAKE_CL_64)
             list(APPEND CMAKE_PREFIX_PATH "C:\\Qt\\Qt6\\6.5.2\\msvc2019_64")
             message("build toolchain arch is 64 on windows")
-        else()
+        else ()
             message("build toolchain arch is 32 on windows")
-        endif()
-    elseif(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-        list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt/6.5.1_3/lib/cmake")
+        endif ()
+    elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+        #        list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt/6.5.1_3/lib/cmake")
+        list(APPEND CMAKE_PREFIX_PATH "/Users/wuxw/Qt/Qt6/6.5.3/macos")
         message("build toolchain on macOS/Darwin")
-    else()
-        # 其他操作系统
-        # 在这里添加针对其他操作系统的处理
-    endif()
+    else ()
+        # 鍏朵粬鎿嶄綔绯荤粺
+        # 鍦ㄨ繖閲屾坊鍔犻拡瀵瑰叾浠栨搷浣滅郴缁熺殑澶勭悊
+    endif ()
 
     if (NOT CMAKE_PREFIX_PATH)
         message(WARNING "CMAKE_PREFIX_PATH is not defined, you may need to set it "
                 "(-DCMAKE_PREFIX_PATH=\"path/to/Qt/lib/cmake\" or -DCMAKE_PREFIX_PATH=/usr/include/{host}/qt{version}/ on Ubuntu)")
     endif ()
-endif()
+endif ()
 
 include_directories(
         code/include
@@ -63,9 +64,10 @@ set(CMAKE_AUTOUIC_OUTPUT_DIR ${CMAKE_CURRENT_SOURCE_DIR}/code/include/uic)
 list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/code/widgets)
 # find_file(UI_FILES ui_xxx.h PATHS ${CMAKE_CURRENT_SOURCE_DIR}/omc_ui/uic NO_DEFAULT_PATH)
 
-file(GLOB CODE_SRC code/*.cpp code/*.cpp )
-file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp )
-file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
+file(GLOB CODE_SRC code/main.cpp)
+file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp)
+#file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
+set(QNTF_SRC code/notification/qt_notification_center.cpp code/notification/qt_notification_center.h)
 
 add_executable(${PROJECT_NAME} ${CODE_SRC} ${UIC_SRC} ${QNTF_SRC})
 
@@ -76,19 +78,21 @@ set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql Qt6::Networ
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${REQUIRED_LIBS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${REQUIRED_LIBS})
-if(Qt${QT_VERSION_MAJOR}_FOUND)
+if (Qt${QT_VERSION_MAJOR}_FOUND)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${REQUIRED_LIBS_QUALIFIED})
-else()
+else ()
     message(STATUS "Qt${QT_VERSION_MAJOR} NOT FOUND !!!")
-endif()
+endif ()
 
 message("CMAKE_COMMAND: ${CMAKE_COMMAND}")
 
 
 # POST_BUILD COMMAND:
-# 查找 windeployqt / macdeployqt 文件
+# find windeployqt / macdeployqt execfile
 find_program(DEPLOYQT_TOOL NAMES windeployqt macdeployqt HINTS "${QT_BIN_PATH}")
-string(TOLOWER  "${CMAKE_BUILD_TYPE}" BUILD_TYPE_LOWER)
-# 调用 windeployqt
-add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND
-        ${DEPLOYQT_TOOL} "$<TARGET_FILE:${PROJECT_NAME}>" $<$<CONFIG:${CMAKE_BUILD_TYPE}>:--${BUILD_TYPE_LOWER}> --qmldir ${CMAKE_SOURCE_DIR} )
+message(STATUS "DEPLOYQT_TOOL: ${DEPLOYQT_TOOL}")
+
+#string(TOLOWER "${CMAKE_BUILD_TYPE}" BUILD_TYPE_LOWER)
+## invok windeployqt
+#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND
+#        ${DEPLOYQT_TOOL} "$<TARGET_FILE:${PROJECT_NAME}>" $<$<CONFIG:${CMAKE_BUILD_TYPE}>:--${BUILD_TYPE_LOWER}> --qmldir ${CMAKE_SOURCE_DIR})

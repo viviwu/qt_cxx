@@ -10,41 +10,35 @@
 #ifndef QTCXX_QTNOTIFICATIONCENTER_H
 #define QTCXX_QTNOTIFICATIONCENTER_H
 
-#include <QObject>
 #include <QMap>
+#include <QMetaMethod>
+#include <QObject>
 #include <QString>
 #include <QVariant>
-#include <QMetaMethod>
+#include <QVariantMap>
 
 // 定义函数指针类型
-//typedef void (*NotificationHandler)(const QString& name, const QVariantMap& userInfo);
+// typedef void (*NotificationHandler)(const QString& name, const QVariantMap& userInfo);
 
-class QTNotificationCenter : public QObject
-{
-Q_OBJECT
+class QTNotificationCenter : public QObject {
+  Q_OBJECT
 
-public:
-    static QTNotificationCenter* defaultCenter();
+  public:
+  static QTNotificationCenter* defaultCenter();
 
-    void postNotification(const QString& name, const QVariantMap& userInfo = QVariantMap());
+  void postNotification(const QString& name, const QVariantMap& userInfo = QVariantMap());
 
-    void addObserver(QObject* observer, const QString& name, const QMetaMethod &selector);
+  void addObserver(QObject* observer, const char* selector, const QString& name);
 
-    void removeObserver(QObject* observer, const QString& name, const QMetaMethod& selector);
+  void removeObserver(QObject* observer, const char* selector, const QString& name);
 
-//    void addObserver(QObject* observer, const QString& name, const QString& selector);
-//
-//    void removeObserver(QObject* observer, const QString& name, const QString& selector);
+  signals:
+  void notificationPosted(const QString& name, const QVariantMap& userInfo);
 
-signals:
-    void notificationPosted(const QString& name, const QVariantMap& userInfo);
+  private:
+  QTNotificationCenter() {}
 
-private:
-    QTNotificationCenter() {}
-
-    QMap<QString, QObject*> m_observers;
-
-//    QMap<NotificationHandler, QObject*> m_handlers;
+  QMap<QString, QObject*> m_observers;
 };
 
 #endif  // QTCXX_QTNOTIFICATIONCENTER_H

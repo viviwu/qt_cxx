@@ -72,5 +72,8 @@ QString GetInternetIP()
   QString tar = list[3];
 //  qDebug() << "tar:" << tar;
   QStringList ip = tar.split("=");
-  return ip[1];
+  if (ip.count()>0)
+    return ip[1];
+  else
+    return "0:0:0:0";
 }

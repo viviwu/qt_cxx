@@ -3,9 +3,7 @@
  * @date 10/8/23
  * @desc ...
  */
-//
-// Created by 朱小争 on 10/8/23.
-//
+
 
 #ifndef QTCXX_QTNOTIFICATIONCENTER_H
 #define QTCXX_QTNOTIFICATIONCENTER_H
@@ -17,7 +15,7 @@
 #include <QVariant>
 #include <QVariantMap>
 
-// 定义函数指针类型
+
 // typedef void (*NotificationHandler)(const QString& name, const QVariantMap& userInfo);
 
 class QTNotificationCenter : public QObject {
@@ -25,6 +23,7 @@ class QTNotificationCenter : public QObject {
 
   public:
   static QTNotificationCenter* defaultCenter();
+  ~QTNotificationCenter();
 
   void postNotification(const QString& name, const QVariantMap& userInfo = QVariantMap());
 

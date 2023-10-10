@@ -18,7 +18,11 @@ MainWindow::~MainWindow() {
 
 
 void MainWindow::onRecievedNotify(const QString &name, const QVariantMap &userInfo) {
-  qDebug() << __FUNCTION__ << name << userInfo;
+  qDebug() << __FUNCTION__ << name ;
+  QMap<QString, QVariant>::const_iterator iter;   //! QVariantMap::iterator iter;
+  for (iter = userInfo.begin();  iter!= userInfo.end(); iter++) {
+    qInfo()<<iter.key()<<iter.value();
+  }
 }
 
 void MainWindow::on_pushButton_clicked() {

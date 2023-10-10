@@ -1,12 +1,27 @@
 #include <QApplication>
+#include <QHostInfo>
 
 #include "widgets/mainwindow.h"
+#include "util/network_info.h"
+
+void localMachineNetworkInfo(){
+  qDebug() << getHostIpAddress();
+  qDebug() << getHostMacAddress();
+
+  QString hostname = QHostInfo::localHostName();
+  qDebug() << hostname;
+
+  QString netIp = GetInternetIP(); //¹«Íøip
+  qDebug() << netIp;
+}
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
 
   MainWindow w;
   w.show();
+
+  localMachineNetworkInfo();
 
   return a.exec();
 }

@@ -16,6 +16,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void showEvent(QShowEvent * ev) override;
+
 public slots:
     void onRecievedNotify(const QString &name, const QVariantMap &userInfo) ;
     void on_pushButton_clicked();

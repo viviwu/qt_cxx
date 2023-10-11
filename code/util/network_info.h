@@ -2,17 +2,19 @@
 // Created by viviwu on 2023/10/10.
 //
 
+#include <QString>
+
 #ifndef QTCXX_NETWORK_INFO_H
 #define QTCXX_NETWORK_INFO_H
 
-//获取IP地址 这个方法一般是
+//鑾峰彇IP鍦板潃 杩欎釜鏂规硶涓�鑸槸
 QString getHostIpAddress();
 
-// 获取Mac地址
+// 鑾峰彇Mac鍦板潃
 QString getHostMacAddress();
 
-//外网的获取方法，通过爬网页来获取外网IP
-//公网ip
+//澶栫綉鐨勮幏鍙栨柟娉曪紝閫氳繃鐖綉椤垫潵鑾峰彇澶栫綉IP
+//鍏綉ip
 QString GetInternetIP();
 
 

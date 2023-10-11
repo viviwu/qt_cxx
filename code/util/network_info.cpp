@@ -11,12 +11,12 @@
 
 #include "network_info.h"
 
-// »ñÈ¡IPµØÖ· Õâ¸ö·½·¨Ò»°ãÊÇ
+// è·å–IPåœ°å€ è¿™ä¸ªæ–¹æ³•ä¸€èˆ¬æ˜¯
 QString getHostIpAddress()
 {
   QString strIpAddress;
   QList<QHostAddress> ipAddressesList = QNetworkInterface::allAddresses();
-  // »ñÈ¡µÚÒ»¸ö±¾Ö÷»úµÄIPv4µØÖ·
+  // è·å–ç¬¬ä¸€ä¸ªæœ¬ä¸»æœºçš„IPv4åœ°å€
   int nListSize = ipAddressesList.size();
   for (int i = 0; i < nListSize; ++i) {
     if (ipAddressesList.at(i) != QHostAddress::LocalHost && ipAddressesList.at(i).toIPv4Address()) {
@@ -24,32 +24,32 @@ QString getHostIpAddress()
       break;
     }
   }
-  // Èç¹ûÃ»ÓĞÕÒµ½£¬ÔòÒÔ±¾µØIPµØÖ·ÎªIP
+  // å¦‚æœæ²¡æœ‰æ‰¾åˆ°ï¼Œåˆ™ä»¥æœ¬åœ°IPåœ°å€ä¸ºIP
   if (strIpAddress.isEmpty()) {
     strIpAddress = QHostAddress(QHostAddress::LocalHost).toString();
   }
   return strIpAddress;
 }
 
-// »ñÈ¡MacµØÖ·
+// è·å–Macåœ°å€
 QString getHostMacAddress()
 {
-  QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces(); // »ñÈ¡ËùÓĞÍøÂç½Ó¿ÚÁĞ±í
+  QList<QNetworkInterface> nets = QNetworkInterface::allInterfaces(); // è·å–æ‰€æœ‰ç½‘ç»œæ¥å£åˆ—è¡¨
   int nCnt = nets.count();
   QString strMacAddr = "";
   for (int i = 0; i < nCnt; i++) {
-    // Èç¹û´ËÍøÂç½Ó¿Ú±»¼¤»î²¢ÇÒÕıÔÚÔËĞĞ²¢ÇÒ²»ÊÇ»Ø»·µØÖ·(±¾µØĞéÄâ½Ó¿Ú)£¬Ôò¿ÉÄÜ¾ÍÊÇÎÒÃÇĞèÒªÕÒµÄMacµØÖ·
+    // å¦‚æœæ­¤ç½‘ç»œæ¥å£è¢«æ¿€æ´»å¹¶ä¸”æ­£åœ¨è¿è¡Œå¹¶ä¸”ä¸æ˜¯å›ç¯åœ°å€(æœ¬åœ°è™šæ‹Ÿæ¥å£)ï¼Œåˆ™å¯èƒ½å°±æ˜¯æˆ‘ä»¬éœ€è¦æ‰¾çš„Macåœ°å€
     if (nets[i].flags().testFlag(QNetworkInterface::IsUp) && nets[i].flags().testFlag(QNetworkInterface::IsRunning)
         && !nets[i].flags().testFlag(QNetworkInterface::IsLoopBack)
         && nets[i].type() != QNetworkInterface::Virtual) {
-      strMacAddr = nets[i].hardwareAddress(); // ÕâÀï½¨Òé·µ»Ø¶à¸ö¿ÉÄÜµÄMAC
+      strMacAddr = nets[i].hardwareAddress(); // è¿™é‡Œå»ºè®®è¿”å›å¤šä¸ªå¯èƒ½çš„MAC
       break;
     }
   }
   return strMacAddr;
 }
 
-//ÍâÍøµÄ»ñÈ¡·½·¨£¬Í¨¹ıÅÀÍøÒ³À´»ñÈ¡ÍâÍøIP ¹«Íøip
+//å¤–ç½‘çš„è·å–æ–¹æ³•ï¼Œé€šè¿‡çˆ¬ç½‘é¡µæ¥è·å–å¤–ç½‘IP å…¬ç½‘ip
 QString GetInternetIP()
 {
   QUrl url("http://whois.pconline.com.cn/");

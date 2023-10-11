@@ -63,6 +63,7 @@ include_directories(
         code/uic
         code/notification
         code/widgets
+        code/model
 )
 # ui_xxx.h path
 set(CMAKE_AUTOUIC_OUTPUT_DIR code/uic)
@@ -73,11 +74,14 @@ list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/code/widgets)
 file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp)
 file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
 file(GLOB UTIL_SRC code/util/*.h code/util/*.cpp)
+file(GLOB MODEL_SRC code/model/*.h code/model/*.cpp )
+
 set(PROJECT_SOURCES
         code/main.cpp
         ${UIC_SRC}
         ${QNTF_SRC}
         ${UTIL_SRC}
+        ${MODEL_SRC}
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

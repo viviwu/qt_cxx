@@ -3,6 +3,7 @@
 
 #include "widgets/mainwindow.h"
 #include "util/network_info.h"
+#include "db_helper.h"
 
 void localMachineNetworkInfo(){
   qDebug() << getHostIpAddress();
@@ -11,12 +12,14 @@ void localMachineNetworkInfo(){
   QString hostname = QHostInfo::localHostName();
   qDebug() << hostname;
 
-  QString netIp = GetInternetIP(); //¹«Íøip
+  QString netIp = GetInternetIP(); //å…¬ç½‘ip
   qDebug() << netIp;
 }
 
 int main(int argc, char *argv[]) {
   QApplication a(argc, argv);
+  if (!DbHelper::createConnection())
+    return EXIT_FAILURE;
 
   MainWindow w;
   w.show();

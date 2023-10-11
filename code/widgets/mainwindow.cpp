@@ -1,13 +1,24 @@
 #include "mainwindow.h"
 
 #include <QMessageBox>
+#include <QtSql>
 
+#include "db_helper.h"
 #include "qt_notification_center.h"
-#include "uic/ui_mainwindow.h"
+#include "ui_mainwindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
-  QTNotificationCenter::defaultCenter()->addObserver(this, SLOT(onRecievedNotify(const QString&, const QVariantMap &)), "NotificationName");
+
+  QSqlRelationalTableModel model;
+
+  DbHelper::initializeModel(&model);
+
+  ui->tableView->setModel(&model);
+  ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
+
+  QTNotificationCenter::defaultCenter()->addObserver(this, SLOT(onRecievedNotify(const QString &, const QVariantMap &)),
+                                                     "NotificationName");
 }
 
 MainWindow::~MainWindow() {
@@ -16,6 +27,12 @@ MainWindow::~MainWindow() {
   qDebug() << __FUNCTION__;
 }
 
+void MainWindow::showEvent(QShowEvent * ev)
+{
+  qDebug() << __FUNCTION__;
+
+  setWindowTitle(QObject::tr("Relational Table Model"));
+}
 
 void MainWindow::onRecievedNotify(const QString &name, const QVariantMap &userInfo) {
   qDebug() << __FUNCTION__ << name ;

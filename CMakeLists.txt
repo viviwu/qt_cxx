@@ -24,7 +24,7 @@ set(EXECUTABLE_OUTPUT_PATH ${OUTPUT_DIR})
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${OUTPUT_DIR})
 #set(CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${OUTPUT_DIR})
 
-if ("$ENV{PATH}" MATCHES "Qt6")
+if ("$ENV{PATH}" MATCHES "Qt")
     message("System PATH contains 'Qt'")
     message(STATUS "ENV_PATH:  $ENV{PATH}")
 else ()
@@ -52,6 +52,13 @@ else ()
     endif ()
 endif ()
 
+# user project define info:
+set(REQUIRED_LIBS Core Gui Widgets Sql Network)
+set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql Qt6::Network)
+
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${REQUIRED_LIBS})
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${REQUIRED_LIBS})
+
 include_directories(
         code/uic
         code/notification
@@ -66,16 +73,22 @@ list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/code/widgets)
 file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp)
 file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
 file(GLOB UTIL_SRC code/util/*.h code/util/*.cpp)
+set(PROJECT_SOURCES
+        code/main.cpp
+        ${UIC_SRC}
+        ${QNTF_SRC}
+        ${UTIL_SRC}
+)
 
-add_executable(${PROJECT_NAME} code/main.cpp  ${UIC_SRC} ${QNTF_SRC} ${UTIL_SRC})
+if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
+    qt_add_executable(${PROJECT_NAME}
+            MANUAL_FINALIZATION
+            ${PROJECT_SOURCES}
+            )
+else()
+    add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+endif()
 
-# user project define info:
-set(QT_VERSION 6)
-set(REQUIRED_LIBS Core Gui Widgets Sql Network)
-set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql Qt6::Network)
-
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${REQUIRED_LIBS})
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${REQUIRED_LIBS})
 if (Qt${QT_VERSION_MAJOR}_FOUND)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${REQUIRED_LIBS_QUALIFIED})
 else ()

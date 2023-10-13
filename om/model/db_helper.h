@@ -14,7 +14,7 @@ class DbHelper {
      This file defines a helper function to open a connection to an
      in-memory SQLITE database and to create a test table.
 
-     If you want to use another database, simply modify the code
+     If you want to use another database, simply modify the om
      below. All the examples in this directory use this function to
      connect to a database.
  */

@@ -60,24 +60,24 @@ find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${REQUIRED_LIBS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${REQUIRED_LIBS})
 
 include_directories(
-        code/uic
-        code/notification
-        code/widgets
-        code/model
+        om/uic
+        notification
+        om/widgets
+        om/model
 )
 # ui_xxx.h path
-set(CMAKE_AUTOUIC_OUTPUT_DIR code/uic)
+set(CMAKE_AUTOUIC_OUTPUT_DIR om/uic)
 # AutoUic *.ui files could not be found in omc_ui/src
-list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/code/widgets)
+list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/om/widgets)
 # find_file(UI_FILES ui_xxx.h PATHS ${CMAKE_CURRENT_SOURCE_DIR}/omc_ui/uic NO_DEFAULT_PATH)
 
-file(GLOB UIC_SRC code/widgets/*.h code/widgets/*.cpp)
-file(GLOB QNTF_SRC code/notification/*.cpp code/notification/*.h)
-file(GLOB UTIL_SRC code/util/*.h code/util/*.cpp)
-file(GLOB MODEL_SRC code/model/*.h code/model/*.cpp )
+file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp)
+file(GLOB QNTF_SRC notification/*.cpp notification/*.h)
+file(GLOB UTIL_SRC om/util/*.h om/util/*.cpp)
+file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp)
 
 set(PROJECT_SOURCES
-        code/main.cpp
+        om/main.cpp
         ${UIC_SRC}
         ${QNTF_SRC}
         ${UTIL_SRC}

@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
   RelationalTableView *rtv = new RelationalTableView;
   ui->stackedWidget->addWidget(rtv);
-  connect(ui->Button, SIGNAL(click()), this, SLOT(onMenuButtonClicked()));
+  connect(ui->Button, SIGNAL(clicked(bool)), this, SLOT(onMenuButtonClicked()));
 }
 
 MainWindow::~MainWindow() {

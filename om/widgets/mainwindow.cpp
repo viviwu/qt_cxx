@@ -1,24 +1,22 @@
 #include "mainwindow.h"
 
 #include <QMessageBox>
-#include <QtSql>
 
-#include "db_helper.h"
+
 #include "qt_notification_center.h"
 #include "ui_mainwindow.h"
+#include "relationa_ltable_view.h"
+
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
   ui->setupUi(this);
 
-  QSqlRelationalTableModel model;
-
-  DbHelper::initializeModel(&model);
-
-  ui->tableView->setModel(&model);
-  ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
-
   QTNotificationCenter::defaultCenter()->addObserver(this, SLOT(onRecievedNotify(const QString &, const QVariantMap &)),
                                                      "NotificationName");
+
+  RelationalTableView *rtv = new RelationalTableView;
+  ui->stackedWidget->addWidget(rtv);
+  connect(ui->Button, SIGNAL(click()), this, SLOT(onMenuButtonClicked()));
 }
 
 MainWindow::~MainWindow() {
@@ -30,8 +28,7 @@ MainWindow::~MainWindow() {
 void MainWindow::showEvent(QShowEvent * ev)
 {
   qDebug() << __FUNCTION__;
-
-  setWindowTitle(QObject::tr("Relational Table Model"));
+  Q_UNUSED(ev)
 }
 
 void MainWindow::onRecievedNotify(const QString &name, const QVariantMap &userInfo) {
@@ -42,8 +39,13 @@ void MainWindow::onRecievedNotify(const QString &name, const QVariantMap &userIn
   }
 }
 
-void MainWindow::on_pushButton_clicked() {
+void MainWindow::onMenuButtonClicked() {
+  ui->stackedWidget->setCurrentIndex(0);
+}
 
+void MainWindow::onSettingButtonClicked()
+{
+  qDebug()<<__FUNCTION__ ;
   qDebug()<<__FUNCTION__ ;
   QVariantMap userInfo;
   userInfo["Key"] = "Value";

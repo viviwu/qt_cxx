@@ -82,7 +82,7 @@ set(PROJECT_SOURCES
         ${QNTF_SRC}
         ${UTIL_SRC}
         ${MODEL_SRC}
-)
+        om/widgets/relationa_ltable_view.cpp om/widgets/relationa_ltable_view.h om/widgets/relationa_ltable_view.ui)
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}

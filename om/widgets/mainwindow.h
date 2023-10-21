@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QtSql>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,10 +21,11 @@ public:
 
 public slots:
     void onRecievedNotify(const QString &name, const QVariantMap &userInfo) ;
-    void on_pushButton_clicked();
+    void onMenuButtonClicked();
+    void onSettingButtonClicked();
 
 private:
     Ui::MainWindow *ui;
-
+    QSqlRelationalTableModel model;
 };
 #endif  // MAINWINDOW_H

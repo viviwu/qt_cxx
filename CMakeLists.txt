@@ -38,7 +38,7 @@ else ()
             message("build toolchain arch is 32 on windows")
         endif ()
     elseif (CMAKE_SYSTEM_NAME STREQUAL "Darwin")
-        #        list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt/6.5.1_3/lib/cmake")
+        list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew/Cellar/qt/6.5.1_3/lib/cmake")
         list(APPEND CMAKE_PREFIX_PATH "/Users/wuxw/Qt/Qt6/6.5.3/macos")
         message("build toolchain on macOS/Darwin")
     else ()
@@ -99,10 +99,13 @@ else ()
     message(STATUS "Qt${QT_VERSION_MAJOR} NOT FOUND !!!")
 endif ()
 
-message("CMAKE_COMMAND: ${CMAKE_COMMAND}")
-
-
+#message("CMAKE_COMMAND: ${CMAKE_COMMAND}")
+message(STATUS "QT_VERSION_MAJOR: ${QT_VERSION_MAJOR}")
 # POST_BUILD COMMAND:
+get_target_property(QMAKE_PATH Qt${QT_VERSION_MAJOR}::qmake IMPORTED_LOCATION)
+get_filename_component(QT_BIN_PATH "${QMAKE_PATH}" DIRECTORY)
+message(STATUS "QMAKE_PATH: ${QMAKE_PATH}")
+message(STATUS "QT_BIN_PATH: ${QT_BIN_PATH}")
 # find windeployqt / macdeployqt execfile
 find_program(DEPLOYQT_TOOL NAMES windeployqt macdeployqt HINTS "${QT_BIN_PATH}")
 message(STATUS "DEPLOYQT_TOOL: ${DEPLOYQT_TOOL}")

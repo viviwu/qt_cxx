@@ -18,7 +18,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
   menus = QString("关系表,绘图,设置").split(",");
   for (int i = 0; i < menus.count(); ++i) {
     const QString name = menus[i];
-    QPushButton *button = new QPushButton(name, ui->widget);
+    QPushButton *button = new QPushButton(name);
     button->setObjectName(QString::number(i));
     button->setMinimumSize(QSize(60, 30));
     button->setMaximumSize(QSize(60, 30));
@@ -29,10 +29,9 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     QWidget *widget = widgetByName(name);
     ui->stackedWidget->insertWidget(i, widget);
   }
-  QSpacerItem *verticalSpacer =
-      new QSpacerItem(20, 434, QSizePolicy::Minimum, QSizePolicy::Expanding);
-
-  ui->verticalLayout->addItem(verticalSpacer);
+//  QSpacerItem *verticalSpacer =
+//      new QSpacerItem(20, 434, QSizePolicy::Minimum, QSizePolicy::Expanding);
+//  ui->verticalLayout->addItem(verticalSpacer);
 }
 
 MainWindow::~MainWindow() {
@@ -50,9 +49,9 @@ void MainWindow::showEvent(QShowEvent * ev)
 
 QWidget *MainWindow::widgetByName(const QString &name) {
   QWidget *widget = nullptr;
-  if ("RelationalTable" == name) {
+  if ("关系表" == name) {
     widget = new RelationalTableView(this);
-  } else if ("Draw" == name) {
+  } else if ("绘图" == name) {
     widget = new DrawWidget(this);
   } else {
     widget = new QWidget(this);
@@ -71,6 +70,7 @@ void MainWindow::onRecievedNotify(const QString &name, const QVariantMap &userIn
 void MainWindow::onMenuButtonClicked() {
   QPushButton *button = (QPushButton *)sender();
   int index = button->objectName().toInt();
+  qDebug()<<__func__<<index<<ui->stackedWidget->count();
   ui->stackedWidget->setCurrentIndex(index);
 }
 

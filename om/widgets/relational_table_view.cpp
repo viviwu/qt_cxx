@@ -19,7 +19,7 @@ RelationalTableView::RelationalTableView(QWidget *parent)
 
   ui->tableView->setModel(&model);
   ui->tableView->setItemDelegate(new QSqlRelationalDelegate(ui->tableView));
-
+  qDebug() << __FUNCTION__;
 }
 
 RelationalTableView::~RelationalTableView() {

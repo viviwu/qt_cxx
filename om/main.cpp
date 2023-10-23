@@ -1,9 +1,9 @@
 #include <QApplication>
 #include <QHostInfo>
 
-#include "widgets/mainwindow.h"
-#include "util/network_info.h"
 #include "db_helper.h"
+#include "mainwindow.h"
+#include "network_info.h"
 
 void localMachineNetworkInfo(){
   qDebug() << getHostIpAddress();

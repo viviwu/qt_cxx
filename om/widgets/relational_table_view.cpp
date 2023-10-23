@@ -2,13 +2,13 @@
 // Created by vivi wu on 2023/10/16.
 //
 
-// You may need to build the project (run Qt uic code generator) to get "ui_relationa_ltable_view.h"
-// resolved
+// You may need to build the project (run Qt uic code generator) to get
+// "ui_relational_table_view.h" resolved
 
-#include "relationa_ltable_view.h"
+#include "relational_table_view.h"
 
 #include "db_helper.h"
-#include "ui_relationa_ltable_view.h"
+#include "ui_relational_table_view.h"
 
 RelationalTableView::RelationalTableView(QWidget *parent)
     : QWidget(parent), ui(new Ui::RelationalTableView) {

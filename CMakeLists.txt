@@ -54,40 +54,45 @@ endif ()
 
 # user project define info:
 set(REQUIRED_LIBS Core Gui Widgets Sql Network)
-set(REQUIRED_LIBS_QUALIFIED Qt6::Core Qt6::Gui Qt6::Widgets Qt6::Sql Qt6::Network)
 
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS ${REQUIRED_LIBS})
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS ${REQUIRED_LIBS})
+if (Qt${QT_VERSION_MAJOR}_FOUND)
+    FOREACH(item ${REQUIRED_LIBS})
+        list(APPEND REQUIRED_LIBS_QUALIFIED  "Qt${QT_VERSION_MAJOR}::${item}")
+    ENDFOREACH()
+    message(STATUS "QT_VERSION_MAJOR:${QT_VERSION_MAJOR}   REQUIRED_LIBS_QUALIFIED: ${REQUIRED_LIBS_QUALIFIED}")
+endif ()
+
 
 include_directories(
-        om/uic
-        notification
-        om/widgets
-        om/model
+        util/
+        om/uic/
+        om/widgets/
+        om/model/
 )
 # ui_xxx.h path
 set(CMAKE_AUTOUIC_OUTPUT_DIR om/uic)
 # AutoUic *.ui files could not be found in omc_ui/src
-list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/om/widgets)
+list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS  om/widgets)
 # find_file(UI_FILES ui_xxx.h PATHS ${CMAKE_CURRENT_SOURCE_DIR}/omc_ui/uic NO_DEFAULT_PATH)
 
-file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp)
-file(GLOB QNTF_SRC notification/*.cpp notification/*.h)
-file(GLOB UTIL_SRC om/util/*.h om/util/*.cpp)
+file(GLOB UTIL_SRC util/*.h  util/*.cpp)
+file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp om/widgets/*.ui)
 file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp)
 
 set(PROJECT_SOURCES
         om/main.cpp
         ${UIC_SRC}
-        ${QNTF_SRC}
         ${UTIL_SRC}
         ${MODEL_SRC}
-        om/widgets/relationa_ltable_view.cpp om/widgets/relationa_ltable_view.h om/widgets/relationa_ltable_view.ui)
+      )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
+            om/widgets/draw_widget.h om/widgets/draw_widget.cpp
             )
 else()
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})

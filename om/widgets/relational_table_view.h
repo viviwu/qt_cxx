@@ -2,8 +2,8 @@
 // Created by vivi wu on 2023/10/16.
 //
 
-#ifndef QTCXX_RELATIONA_LTABLE_VIEW_H
-#define QTCXX_RELATIONA_LTABLE_VIEW_H
+#ifndef QTCXX_relational_table_view_H
+#define QTCXX_relational_table_view_H
 
 #include <QWidget>
 #include <QSqlRelationalTableModel>
@@ -19,11 +19,11 @@ class RelationalTableView : public QWidget {
 
   public:
   explicit RelationalTableView(QWidget *parent = nullptr);
-  ~RelationalTableView() override;
+  ~RelationalTableView();
 
-  private:
+ private:
   Ui::RelationalTableView *ui;
   QSqlRelationalTableModel model;
 };
 
-#endif  // QTCXX_RELATIONA_LTABLE_VIEW_H
+#endif  // QTCXX_relational_table_view_H

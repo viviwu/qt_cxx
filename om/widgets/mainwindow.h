@@ -1,7 +1,9 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QList>
 #include <QMainWindow>
+#include <QPushButton>
 #include <QtSql>
 
 QT_BEGIN_NAMESPACE
@@ -17,15 +19,18 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void showEvent(QShowEvent * ev) override;
+    void showEvent(QShowEvent *ev) override;
 
-public slots:
+    QWidget *widgetByName(const QString &name);
+
+   public slots:
     void onRecievedNotify(const QString &name, const QVariantMap &userInfo) ;
     void onMenuButtonClicked();
     void onSettingButtonClicked();
 
-private:
+   private:
     Ui::MainWindow *ui;
     QSqlRelationalTableModel model;
+    QStringList menus;
 };
 #endif  // MAINWINDOW_H

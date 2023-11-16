@@ -3,7 +3,7 @@
 #include <QMessageBox>
 #include <QSpacerItem>
 
-#include "draw_widget.h"
+#include "chess_board.h"
 #include "qt_notification_center.h"
 #include "relational_table_view.h"
 #include "ui_mainwindow.h"
@@ -52,7 +52,7 @@ QWidget *MainWindow::widgetByName(const QString &name) {
   if ("关系表" == name) {
     widget = new RelationalTableView(this);
   } else if ("绘图" == name) {
-    widget = new DrawWidget(this);
+    widget = new ChessBoard(this);
   } else {
     widget = new QWidget(this);
   }

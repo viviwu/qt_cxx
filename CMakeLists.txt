@@ -95,7 +95,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
-            om/widgets/draw_widget.h om/widgets/draw_widget.cpp
+            om/widgets/chess_board.h om/widgets/chess_board.cpp
             )
 else()
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})

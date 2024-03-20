@@ -82,7 +82,7 @@ list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS  om/widgets)
 
 file(GLOB UTIL_SRC util/*.h  util/*.cpp)
 file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp om/widgets/*.ui)
-file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp)
+file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp om/widgets/*.h om/widgets/*.cpp)
 
 set(PROJECT_SOURCES
         om/main.cpp
@@ -95,14 +95,18 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
             MANUAL_FINALIZATION
             ${PROJECT_SOURCES}
-            om/widgets/chess_board.h om/widgets/chess_board.cpp
             )
+    qt_add_executable(AppDataPath
+            MANUAL_FINALIZATION
+           AppDataPath/AppDataPath.cpp
+    )
 else()
     add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
 endif()
 
 if (Qt${QT_VERSION_MAJOR}_FOUND)
     target_link_libraries(${PROJECT_NAME} PRIVATE ${REQUIRED_LIBS_QUALIFIED})
+    target_link_libraries(AppDataPath PRIVATE ${REQUIRED_LIBS_QUALIFIED})
 else ()
     message(STATUS "Qt${QT_VERSION_MAJOR} NOT FOUND !!!")
 endif ()

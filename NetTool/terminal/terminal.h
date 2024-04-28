@@ -17,7 +17,7 @@ public:
     void start();
 
 signals:
-    void connectedToTracker();
+    void connectedToServer();
     void terminalListReceived(const QStringList& terminals);
     void terminalConnected();
     void terminalDisconnected();
@@ -30,11 +30,11 @@ private slots:
 
 private:
     void registTerminalInfo();
-    void sendRequestToTracker(const QString& request);
+    void sendRequestToServer(const QString& request);
 
     QString m_udid;
-    QHostAddress m_trackerAddress;
-    quint16 m_trackerPort;
+    QHostAddress m_ServerAddress;
+    quint16 m_ServerPort;
     quint16 m_listenPort;
     QTcpSocket *m_socket;
     QTcpServer *m_server;

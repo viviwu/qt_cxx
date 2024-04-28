@@ -14,8 +14,8 @@ int main(int argc, char *argv[])
     terminal.start();
 
     // Connect Terminal signals to slots
-    QObject::connect(&terminal, &Terminal::connectedToTracker, [&]() {
-        qDebug() << "Connected to Tracker";
+    QObject::connect(&terminal, &Terminal::connectedToServer, [&]() {
+        qDebug() << "Connected to Server";
     });
 
     QObject::connect(&terminal, &Terminal::terminalListReceived, [&](const QStringList& terminals) {

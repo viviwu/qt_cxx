@@ -1,6 +1,6 @@
-// Tracker.h
-#ifndef TRACKER_H
-#define TRACKER_H
+// Server.h
+#ifndef Server_H
+#define Server_H
 
 #include <QList>
 #include <QObject>
@@ -8,12 +8,12 @@
 #include <QTcpSocket>
 #include "fwd_def.h"
 
-class Tracker : public QObject
+class Server : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Tracker(QObject *parent = nullptr);
+    explicit Server(QObject *parent = nullptr);
 
     QList<TerminalInfo>& activeTerminals() ;
 
@@ -30,5 +30,5 @@ private:
     QList<TerminalInfo> m_activeTerminals;
 };
 
-#endif // TRACKER_H
+#endif // Server_H
 

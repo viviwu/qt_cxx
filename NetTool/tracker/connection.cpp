@@ -1,12 +1,12 @@
 #include "connection.h"
+#include "server.h"
 #include <QList>
-#include "tracker.h"
 
-Connection::Connection(QTcpSocket *socket, Tracker *parent)
+Connection::Connection(QTcpSocket *socket, Server *parent)
     : QObject(parent)
     , m_socket(socket)
 {
-    tracker = parent;
+    Server = parent;
     //Already Connected
     connect(m_socket, &QTcpSocket::readyRead, this, &Connection::handleReadyRead);
     connect(m_socket, &QTcpSocket::disconnected, this, &Connection::handleDisconnected);
@@ -25,7 +25,7 @@ void Connection::handleReadyRead()
     QString request = m_socket->readAll();
     qDebug() << "Received request:" << request;
 
-    QList<TerminalInfo> &m_activeTerminals = tracker->activeTerminals();
+    QList<TerminalInfo> &m_activeTerminals = Server->activeTerminals();
     if (request.startsWith("REGISTER_TERMINAL:")) {
         request.remove("REGISTER_TERMINAL:");
         QStringList terminals = request.split(";", Qt::SkipEmptyParts);

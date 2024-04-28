@@ -80,11 +80,11 @@ BitTorrent的PCDN网络模型使得用户能够更快地下载大文件，而不
 ---
 
 ### 先实现一个简单的p2p网络服务/应用组
-主要包括两部分：中心服务Tracker和终端节点Terminal。
-Tracker：管理记录活跃的Terminal节点信息（IP、Id等），Terminal上线后，Tracker自动记录其节点信息；Terminal下线后，Tracker自动移除其节点信息；
-Terminal可以向Tracker查询当前活跃的其他Terminal节点信息。
-Terminal：终端节点，可以访问Tracker，也可以访问其他Terminal或被其他Terminal访问（作为Server节点提供服务），并互相发送数据、消息；
-Terminal提供两种用户命令菜单：向Tracker查询其他节点信息，连接其他节点服务。
+主要包括两部分：中心服务Server和终端节点Terminal。
+Server：管理记录活跃的Terminal节点信息（IP、Id等），Terminal上线后，Server自动记录其节点信息；Terminal下线后，Server自动移除其节点信息；
+Terminal可以向Server查询当前活跃的其他Terminal节点信息。
+Terminal：终端节点，可以访问Server，也可以访问其他Terminal或被其他Terminal访问（作为Server节点提供服务），并互相发送数据、消息；
+Terminal提供两种用户命令菜单：向Server查询其他节点信息，连接其他节点服务。
 
 
 Some *italic* and **bold** text and `inline code`.

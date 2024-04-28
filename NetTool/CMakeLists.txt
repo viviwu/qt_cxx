@@ -12,11 +12,11 @@ set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
 
 add_subdirectory(tracker)
 
-add_subdirectory(terminal)
+#add_subdirectory(terminal)
 
 
 include(GNUInstallDirs)
-install(TARGETS tracker terminal
+install(TARGETS Server
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
 )

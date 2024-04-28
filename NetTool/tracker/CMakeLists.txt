@@ -9,13 +9,13 @@ include_directories(
     ./
 )
 
-add_executable(tracker
-    main.cpp
+add_executable(Server
+        tracker.cpp
     connection.h
     connection.cpp
-    tracker.cpp
-    tracker.h
+        server.cpp
+        server.h
     fwd_def.h
 )
 
-target_link_libraries(tracker ${REQUIRED_LIBS_QUALIFIED})
+target_link_libraries(Server ${REQUIRED_LIBS_QUALIFIED})

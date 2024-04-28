@@ -5,14 +5,14 @@
 #include <QTcpServer>
 #include <QTcpSocket>
 
-class Tracker;
+class Server;
 
 class Connection : public QObject
 {
     Q_OBJECT
 
 public:
-    explicit Connection(QTcpSocket *socket, Tracker *parent = nullptr);
+    explicit Connection(QTcpSocket *socket, Server *parent = nullptr);
 
     ~Connection();
 
@@ -28,7 +28,7 @@ private slots:
 
 private:
     QTcpSocket *m_socket;
-    Tracker *tracker;
+    Server *Server;
 };
 
 #endif // CONNECTION_H

@@ -90,7 +90,7 @@ set(PROJECT_SOURCES
         ${UTIL_SRC}
         ${MODEL_SRC}
       )
-
+message(STATUS "PROJECT_NAME:${PROJECT_NAME}")
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
     qt_add_executable(${PROJECT_NAME}
             MANUAL_FINALIZATION

@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.17)
 project(qtcxx)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CMAKE_AUTOMOC ON)
@@ -69,44 +69,54 @@ endif ()
 
 
 include_directories(
-        util/
-        om/uic/
-        om/widgets/
-        om/model/
+#        util/
+#        om/uic/
+#        om/widgets/
+#        om/model/
 )
 # ui_xxx.h path
 #set(CMAKE_AUTOUIC_OUTPUT_DIR om/uic)
 # AutoUic *.ui files could not be found in omc_ui/src
-list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS  om/widgets)
+#list(APPEND CMAKE_AUTOUIC_SEARCH_PATHS  om/widgets)
 # find_file(UI_FILES ui_xxx.h PATHS ${CMAKE_CURRENT_SOURCE_DIR}/omc_ui/uic NO_DEFAULT_PATH)
 
-file(GLOB UTIL_SRC util/*.h  util/*.cpp)
-file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp om/widgets/*.ui)
-file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp om/widgets/*.h om/widgets/*.cpp)
+#file(GLOB UTIL_SRC util/*.h  util/*.cpp)
+#file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp om/widgets/*.ui)
+#file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp om/widgets/*.h om/widgets/*.cpp)
 
-set(PROJECT_SOURCES
-        om/main.cpp
-        ${UIC_SRC}
-        ${UTIL_SRC}
-        ${MODEL_SRC}
-      )
+set(TARGET_NAME ${PROJECT_NAME})
+set(TARGET_SOURCES
+        untitled/main.cpp
+)
 
+#set(PROJECT_SOURCES
+#        om/main.cpp
+#        ${UIC_SRC}
+#        ${UTIL_SRC}
+#        ${MODEL_SRC}
+#      )
+ 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(${PROJECT_NAME}
+#    qt_add_executable(${TARGET_NAME}
+#            MANUAL_FINALIZATION
+#            ${PROJECT_SOURCES}
+#            )
+#    qt_add_executable(TARGET_NAME
+#            MANUAL_FINALIZATION
+#           AppDataPath/AppDataPath.cpp
+#    )
+
+    qt_add_executable(${TARGET_NAME}
             MANUAL_FINALIZATION
-            ${PROJECT_SOURCES}
-            )
-    qt_add_executable(AppDataPath
-            MANUAL_FINALIZATION
-           AppDataPath/AppDataPath.cpp
+           ${TARGET_SOURCES}
     )
+    
 else()
-    add_executable(${PROJECT_NAME} ${PROJECT_SOURCES})
+    add_executable(${TARGET_NAME} ${PROJECT_SOURCES})
 endif()
 
 if (Qt${QT_VERSION_MAJOR}_FOUND)
-    target_link_libraries(${PROJECT_NAME} PRIVATE ${REQUIRED_LIBS_QUALIFIED})
-    target_link_libraries(AppDataPath PRIVATE ${REQUIRED_LIBS_QUALIFIED})
+    target_link_libraries(${TARGET_NAME} PRIVATE ${REQUIRED_LIBS_QUALIFIED})
 else ()
     message(STATUS "Qt${QT_VERSION_MAJOR} NOT FOUND !!!")
 endif ()
@@ -124,5 +134,5 @@ message(STATUS "DEPLOYQT_TOOL: ${DEPLOYQT_TOOL}")
 
 #string(TOLOWER "${CMAKE_BUILD_TYPE}" BUILD_TYPE_LOWER)
 ## invok windeployqt
-#add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD COMMAND
-#        ${DEPLOYQT_TOOL} "$<TARGET_FILE:${PROJECT_NAME}>" $<$<CONFIG:${CMAKE_BUILD_TYPE}>:--${BUILD_TYPE_LOWER}> --qmldir ${CMAKE_SOURCE_DIR})
+#add_custom_command(TARGET ${TARGET_NAME} POST_BUILD COMMAND
+#        ${DEPLOYQT_TOOL} "$<TARGET_FILE:${TARGET_NAME}>" $<$<CONFIG:${CMAKE_BUILD_TYPE}>:--${BUILD_TYPE_LOWER}> --qmldir ${CMAKE_SOURCE_DIR})

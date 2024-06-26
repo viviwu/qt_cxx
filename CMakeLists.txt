@@ -83,7 +83,7 @@ include_directories(
 #file(GLOB UTIL_SRC util/*.h  util/*.cpp)
 #file(GLOB UIC_SRC om/widgets/*.h om/widgets/*.cpp om/widgets/*.ui)
 #file(GLOB MODEL_SRC om/model/*.h om/model/*.cpp om/widgets/*.h om/widgets/*.cpp)
-
+ 
 set(TARGET_NAME ${PROJECT_NAME})
 set(TARGET_SOURCES
         untitled/main.cpp
@@ -94,8 +94,7 @@ set(TARGET_SOURCES
 #        ${UIC_SRC}
 #        ${UTIL_SRC}
 #        ${MODEL_SRC}
-#      )
- 
+#      ) 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
 #    qt_add_executable(${TARGET_NAME}
 #            MANUAL_FINALIZATION
